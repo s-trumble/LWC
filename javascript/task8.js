@@ -8,9 +8,11 @@ Enter a number: 4
 ...  
 4 x 10 = 40
 */
+multiplicationTable();
+function multiplicationTable(){
+    let userNumber = Number(prompt('Enter a number: '));
 
-let userNumber = Number(prompt('Enter a number: '));
-
-for(let i = 1; i <= 10; i++){
-    console.log(userNumber + ' x ' + i + ' = ' + userNumber * i);
+    for(let i = 1; i <= 10; i++){
+        console.log(userNumber + ' x ' + i + ' = ' + userNumber * i);
+    }
 }
