@@ -9,15 +9,15 @@ Sum is: 8
 */
 
 let sum = 0;
-number();
-function number(){
+untilZero();
+function untilZero(){
     let userNumber = Number(prompt('Enter a number: '));
     
     if(userNumber === 0){
         console.log('Sum is: ' + sum);
     } else{
         sum += userNumber;
-        number();
+        untilZero();
     }
 }
 
