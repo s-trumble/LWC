@@ -16,7 +16,7 @@ Primes between 10 and 20:
 function primesBetween(){
     let start = Number(prompt('Enter start number: '));
     let end = Number(prompt('Enter end number: '));
-    for(i = start ; i <= end; i++){
+    for(let i = start ; i <= end; i++){
         if(isPrime(i)){
             console.log(i);
         }
