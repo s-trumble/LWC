@@ -9,13 +9,13 @@ function printStarsFromPrompt(){
     console.log(stars);
 }
 
-function sumOfNumbesr(){
+function sumOfNumbers(){
     let numberAsString = prompt("Type a whole positive number: ");
     let numberAsNumber = Number(numberAsString);
     console.log(numberAsNumber, typeof numberAsNumber);
     let total = 0;
     for(let i = 1; i <= numberAsNumber ; i += 1){
-    total += i;
+        total += i;
     }
     console.log(total);
 }
