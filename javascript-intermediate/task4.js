@@ -35,14 +35,26 @@ function cleanEmails(emails) {
     let splitNameAndDomain = email.split('@');
     let namePart = splitNameAndDomain[0].trim();
     let domainPart = splitNameAndDomain[1].trim();
-    let nameArray = namePart.split(/ +/); // Split by one or more spaces
-    let fullName = '';
-    for (let word of nameArray) {
-      if (word) { // Check for empty strings
-        fullName += word[0].toUpperCase() + word.substring(1).toLowerCase() + ' ';
+    let nameArray = [];
+    let currentWord = '';
+    for (let char of namePart) { //  Iterate through characters of the string
+      if (char === ' ' || char === '-' || char === '_') {
+        if (currentWord !== '') {
+          nameArray.push(currentWord);
+          currentWord = '';
+        }
+      } else {
+        currentWord += char;
       }
     }
-    fullName = fullName.trim(); // Remove trailing space
+    if (currentWord !== '') {
+      nameArray.push(currentWord);
+    }
+    let fullName = '';
+    for (let word of nameArray) {
+      fullName += word[0].toUpperCase() + word.substring(1).toLowerCase() + ' ';
+    }
+    fullName = fullName.trim();
     let lastName = nameArray[nameArray.length - 1].toLowerCase();
     let cleanedEmail = lastName + '@' + domainPart.toLowerCase();
     cleanedContacts.push(fullName + ' <' + cleanedEmail + '>');
