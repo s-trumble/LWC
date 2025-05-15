@@ -35,6 +35,7 @@ function cleanEmails(emails) {
     let splitNameAndDomain = email.split('@');
     let namePart = splitNameAndDomain[0].trim();
     let domainPart = splitNameAndDomain[1].trim();
+    
     let nameArray = [];
     let currentWord = '';
     for (let char of namePart) { //  Iterate through characters of the string
