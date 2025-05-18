@@ -64,7 +64,7 @@ let cleanContacts = (validContacts) => {
     
     let contacts = [];
     for(let i = 0; i < validContacts.length; i++){
-
+        let contactData = validContacts[i];
         let normalizedTitle = contactData.title;
         // Normalize the title
         if (normalizedTitle) { // Only normalize if title exists
@@ -79,13 +79,13 @@ let cleanContacts = (validContacts) => {
         } else {
             normalizedTitle = "Unknown";
         }
-        let contactData = validContacts[i];
+        
         let contact = {
         firstName: (contactData.firstName == null || contactData.firstName == "") ? "Unknown" : contactData.firstName,
         lastName: (contactData.lastName == null || contactData.lastName == "") ? "Unknown" : contactData.lastName,
         email: (contactData.email == null || contactData.email == "") ? "no-email@example.com" : contactData.email,
         company: (contactData.company == null || contactData.company == "") ? "N/A" : contactData.company,
-        title: (contactData.title == null || contactData.title == "") ? "Unknown" : contactData.title,
+        title: normalizedTitle
         }
   contacts.push(contact);
   }
