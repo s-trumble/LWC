@@ -21,22 +21,60 @@ Missing company → "N/A"
 
 */
 
-let cleanUp = (data) => {
+let findValidContacts = (data) => {
     let rows = data.split('\n');
-    console.log(rows);
-  let contacts = [];
-  for(let i = 1; i < rows.length; i++){
-    let contactData = rows[i].split(',');
-    let contact = {
-      firstName: (contactData[0] == null || contactData[0] == "") ? "Unknown" : contactData[0],
-      lastName: (contactData[1] == null || contactData[1] == "") ? "Unknown" : contactData[1],
-      email: (contactData[2] == null || contactData[2] == "") ? "no-email@example.com" : contactData[2],
-      company: (contactData[3] == null || contactData[3] == "") ? "N/A" : contactData[3],
-      title: (contactData[4] == null || contactData[4] == "") ? "Unknown" : contactData[4],
+    console.log(`Original rows: ${rows}`);
+
+    let invalidContacts  = [];
+    let validContacts  = [];
+    
+    for(let i = 1; i < rows.length; i++){
+        let invalid = false;
+        let contactData = rows[i].split(',');
+        //check missing first name
+        if(contactData[0] == null || contactData[0] == "" ){
+            invalid = true;
+        }
+        //check invalid email. use -1 to ensuer a domain exists e.g. email not test@.com
+        if( !contactData[2]?.includes('@') || contactData[2]?.indexOf('@') >= contactData[2]?.lastIndexOf('.') - 1){
+            invalid = true;
+        }
+
+        let contact = {
+            firstName: contactData[0],
+            lastName: contactData[1],
+            email: contactData[2],
+            company: contactData[3],
+            title: contactData[4],
+            invalid: invalid
+        }
+        if(invalid){
+          invalidContacts.push(contact);  
+        } else {
+            validContacts.push(contact);
+        }
     }
+    console.log(`Invalid Contacts: ${invalidContacts}`);
+    console.log(`Valid Contacts: ${validContacts}`);
+    cleanContacts(validContacts);     
+} 
+
+
+let cleanContacts = (validContacts) => { 
+    
+    let contacts = [];
+    for(let i = 0; i < validContacts.length; i++){
+        let contactData = validContacts[i];
+        let contact = {
+        firstName: (contactData.firstName == null || contactData.firstName == "") ? "Unknown" : contactData.firstName,
+        lastName: (contactData.lastName == null || contactData.lastName == "") ? "Unknown" : contactData.lastName,
+        email: (contactData.email == null || contactData.email == "") ? "no-email@example.com" : contactData.email,
+        company: (contactData.company == null || contactData.company == "") ? "N/A" : contactData.company,
+        title: (contactData.title == null || contactData.title == "") ? "Unknown" : contactData.title,
+        }
   contacts.push(contact);
   }
   console.log(contacts);
 }
 
-cleanUp(csvData);
+findValidContacts(csvData);
