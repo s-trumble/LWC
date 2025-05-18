@@ -63,6 +63,7 @@ let findValidContacts = (data) => {
 let cleanContacts = (validContacts) => { 
     
     let contacts = [];
+    let specialTitle = [];
     for(let i = 0; i < validContacts.length; i++){
         let contactData = validContacts[i];
         let normalizedTitle = contactData.title;
@@ -89,7 +90,21 @@ let cleanContacts = (validContacts) => {
         }
   contacts.push(contact);
   }
-  console.log(contacts);
+  console.log(`Contacts: ${contacts}`);
+  filterContactsByTitle(contacts);
 }
+
+let filterContactsByTitle = (contacts) => {
+  let filteredContacts = [];
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    if (contact.title === "Manager" || contact.title === "VP" || contact.title === "CEO") {
+      filteredContacts.push(contact);
+    }
+  }
+  console.log(`Filtered Contacts (Manager, VP, or CEO): ${filteredContacts}`);
+  return filteredContacts; // Return the filtered array
+};
+
 
 findValidContacts(csvData);
