@@ -23,7 +23,7 @@ Missing company → "N/A"
 
 let findValidContacts = (data) => {
     let rows = data.split('\n');
-    console.log(`Original rows: ${rows}`);
+    // console.log(`Original rows: ${rows}`);
 
     let invalidContacts  = [];
     let validContacts  = [];
@@ -54,17 +54,17 @@ let findValidContacts = (data) => {
             validContacts.push(contact);
         }
     }
-    console.log(`Invalid Contacts: ${invalidContacts}`);
-    console.log(`Valid Contacts: ${validContacts}`);
-    cleanContacts(validContacts);     
-    return validContacts;
+    // console.log(`Invalid Contacts: ${invalidContacts}`);
+    // console.log(`Valid Contacts: ${validContacts}`);
+    
+    return {invalidContacts, validContacts};
 } 
 
 
 let cleanContacts = (validContacts) => { 
     
     let contacts = [];
-    let specialTitle = [];
+    let unknownTitlesCount = 0;
     for(let i = 0; i < validContacts.length; i++){
         let contactData = validContacts[i];
         let normalizedTitle = contactData.title;
@@ -80,6 +80,7 @@ let cleanContacts = (validContacts) => {
             }
         } else {
             normalizedTitle = "Unknown";
+            unknownTitlesCount++;
         }
         
         let contact = {
@@ -91,9 +92,9 @@ let cleanContacts = (validContacts) => {
         }
   contacts.push(contact);
   }
-  console.log(`Contacts: ${contacts}`);
+//   console.log(`Contacts: ${contacts}`);
   filterContactsByTitle(contacts);
-  return contacts;
+  return {contacts, unknownTitlesCount};
 }
 
 let filterContactsByTitle = (contacts) => {
@@ -104,7 +105,7 @@ let filterContactsByTitle = (contacts) => {
       filteredContacts.push(contact);
     }
   }
-  console.log(`Filtered Contacts (Manager, VP, or CEO): ${filteredContacts}`);
+//   console.log(`Filtered Contacts (Manager, VP, or CEO): ${filteredContacts}`);
   //groupAndSummariseContacts(filteredContacts);
   return filteredContacts;
 };
@@ -127,23 +128,61 @@ let groupAndSummariseContacts = (contacts) =>{
         companySummary[company]++;
 
     }
-    console.log(`Contacts Grouped by Company: ${groupedContacts}`);
-        for (let company in groupedContacts) {
-            console.log(`  ${company}:`);
-            groupedContacts[company].forEach(contact => {
-                console.log(`    - ${contact.firstName} ${contact.lastName}`); 
-            });
-        }
-    console.log(`Summary of Contacts per Company:`);
-        for (let company in companySummary) {
-            console.log(`  ${company}: ${companySummary[company]}`); // Iterate and print
-        }
-    return { groupedContacts, companySummary }
+    // console.log(`Contacts Grouped by Company: ${groupedContacts}`);
+    //     for (let company in groupedContacts) {
+    //         console.log(`  ${company}:`);
+    //         groupedContacts[company].forEach(contact => {
+    //             console.log(`    - ${contact.firstName} ${contact.lastName}`); 
+    //         });
+    //     }
+    // console.log(`Summary of Contacts per Company:`);
+    //     for (let company in companySummary) {
+    //         console.log(`  ${company}: ${companySummary[company]}`); // Iterate and print
+    //     }
+    return { groupedContacts, companySummary };
 }
 
-let importContacts = (data) => {
+let simulateImport = (data) => {
+    
+    
+    let timestamp = new Date().toISOString();
+    console.log(` 📦 CRM Import Summary ----
+        📅 Import Timestamp Start: ${timestamp}`);
+    setTimeout(() => {
+      console.log("...importing contacts");
+        }, "2000");
+    
+    let {invalidContacts, validContacts} = findValidContacts(data);
+    
+    if (!validContacts || validContacts.length === 0) {
+        console.log(`
+        ❌ Import Failed.
+        Reason: No valid contacts found.
+        Please review the data before trying again.`
+        );
+    return;
+    }
+
+    console.log(`✅ Imported contacts: ${validContacts.length}`);
+    console.log(`❌ Skipped contacts: (invalid data) ${invalidContacts.length}`);
+    
+    setTimeout(() => {
+      console.log("...validating titles");
+        }, "2000");
+    let { contacts, unknownTitlesCount} = cleanContacts(validContacts);
+    
+    console.log(`🏷️ Contacts with unknown title: ${unknownTitlesCount}`);
+
+    setTimeout(() => {
+          console.log("...counting key titles");
+        }, "2000");
+    let keyContacts = filterContactsByTitle(contacts);
+        
+    console.log(`🧠Key roles Imported (CEO, VP, Manager): ${keyContacts.length}`);
+
+    timestamp = new Date().toISOString();
+    console.log(`📅 Import Timestamp End: ${timestamp}`);
     
 }
 
-
-//findValidContacts(csvData);
+simulateImport(csvData);
