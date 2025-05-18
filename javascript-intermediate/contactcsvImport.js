@@ -64,6 +64,21 @@ let cleanContacts = (validContacts) => {
     
     let contacts = [];
     for(let i = 0; i < validContacts.length; i++){
+
+        let normalizedTitle = contactData.title;
+        // Normalize the title
+        if (normalizedTitle) { // Only normalize if title exists
+            normalizedTitle = normalizedTitle.toLowerCase(); // Convert to lowercase for easier comparison
+            if (normalizedTitle === "ceo" || normalizedTitle === "chief executive officer") {
+                normalizedTitle = "CEO";
+            } else if (normalizedTitle === "vp") {
+                normalizedTitle = "VP";
+            } else {
+                normalizedTitle = normalizedTitle[0].toUpperCase() + normalizedTitle.substring(1).toLowerCase;
+            }
+        } else {
+            normalizedTitle = "Unknown";
+        }
         let contactData = validContacts[i];
         let contact = {
         firstName: (contactData.firstName == null || contactData.firstName == "") ? "Unknown" : contactData.firstName,
