@@ -1,9 +1,19 @@
-//reverse array without .reverse()
+//Given this array:
+//let mixed = [0, "hello", false, 42, "", null, "world", undefined];
+//Use a loop to create a new array that only contains the truthy values.
 
-let nums = [1, 2, 3, 4, 5];
-let reverseNums = [];
-for(let i = nums.length - 1; i >= 0; i--){
-    reverseNums.push(nums[i]);
-    console.log(`in loop: ${reverseNums}`);
+let mixed = [0, "hello", false, 42, "", null, "world", undefined];
+
+let findTruthy = (mixedArray) => {
+    let truthyArray = [];
+    for(let item of mixedArray){
+        if(item){
+            truthyArray.push(item);
+        }
+    }
+    console.log(truthyArray);
+    return truthyArray;
 }
-console.log(`Final: ${reverseNums}`);
+
+findTruthy(mixed);
+
