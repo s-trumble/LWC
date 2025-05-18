@@ -57,6 +57,7 @@ let findValidContacts = (data) => {
     console.log(`Invalid Contacts: ${invalidContacts}`);
     console.log(`Valid Contacts: ${validContacts}`);
     cleanContacts(validContacts);     
+    return validContacts;
 } 
 
 
@@ -92,6 +93,7 @@ let cleanContacts = (validContacts) => {
   }
   console.log(`Contacts: ${contacts}`);
   filterContactsByTitle(contacts);
+  return contacts;
 }
 
 let filterContactsByTitle = (contacts) => {
@@ -103,8 +105,45 @@ let filterContactsByTitle = (contacts) => {
     }
   }
   console.log(`Filtered Contacts (Manager, VP, or CEO): ${filteredContacts}`);
-  return filteredContacts; // Return the filtered array
+  //groupAndSummariseContacts(filteredContacts);
+  return filteredContacts;
 };
 
+let groupAndSummariseContacts = (contacts) =>{
+    let groupedContacts = {};
+    let companySummary = {};
 
-findValidContacts(csvData);
+    for(let contact of contacts){
+        let company = contact.company || `N/A`;
+        //group contacts by company
+        if(!groupedContacts[company]){
+            groupedContacts[company] = [];
+        }
+        groupedContacts[company].push(contact);
+
+        if(!companySummary[company]){
+            companySummary[company] = 0;
+        }
+        companySummary[company]++;
+
+    }
+    console.log(`Contacts Grouped by Company: ${groupedContacts}`);
+        for (let company in groupedContacts) {
+            console.log(`  ${company}:`);
+            groupedContacts[company].forEach(contact => {
+                console.log(`    - ${contact.firstName} ${contact.lastName}`); 
+            });
+        }
+    console.log(`Summary of Contacts per Company:`);
+        for (let company in companySummary) {
+            console.log(`  ${company}: ${companySummary[company]}`); // Iterate and print
+        }
+    return { groupedContacts, companySummary }
+}
+
+let importContacts = (data) => {
+    
+}
+
+
+//findValidContacts(csvData);
