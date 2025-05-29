@@ -1,0 +1,29 @@
+table{
+    width: 80%;
+    margin: auto;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td{
+    padding: 10px;
+}
+th {
+    background-color: lightblue;
+    text-align: center;
+}
+td:nth-child(3) {
+    text-align: right; /* right align Amount column */
+}
+tr:hover {
+    background-color: lightgray;
+}
+td.prospecting{
+    color: orange;
+}
+td.closed-won{
+    color: green;
+}
+td.closed-lost{
+    color: red;
+}
