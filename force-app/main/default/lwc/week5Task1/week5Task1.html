@@ -1,0 +1,45 @@
+<template>
+    <table>
+        <thead>
+            <tr>
+                <th>Opportunity Name</th>
+                <th>Stage</th>
+                <th>Amount</th>
+                <th>Close Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> {opp1.name}</td>
+                <td class="prospecting"> {opp1.stage}</td>
+                <td> {opp1.amount}</td>
+                <td> {opp1.closeDate}</td>
+            </tr>
+            <tr>
+                <td> {opp2.name}</td>
+                <td> {opp2.stage}</td>
+                <td> {opp2.amount}</td>
+                <td> {opp2.closeDate}</td>
+            </tr>
+            <tr>
+                <td> {opp3.name}</td>
+                <td> {opp3.stage}</td>
+                <td> {opp3.amount}</td>
+                <td> {opp3.closeDate}</td>
+            </tr>
+            <tr>
+                <td> {opp4.name}</td>
+                <td class="closed-won"> {opp4.stage}</td>
+                <td> {opp4.amount}</td>
+                <td> {opp4.closeDate}</td>
+            </tr>
+            <tr>
+                <td> {opp5.name}</td>
+                <td class="closed-lost"> {opp5.stage}</td>
+                <td> {opp5.amount}</td>
+                <td> {opp5.closeDate}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</template>
