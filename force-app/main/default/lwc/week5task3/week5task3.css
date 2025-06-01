@@ -1,0 +1,35 @@
+.container {
+    display: grid;
+    column-gap: 10%;
+    row-gap: 10%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+.card {
+    border: 1px solid lightblue;
+    background-color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 5px;
+}
+.card:nth-child(1) {
+    background-color: lightcoral;
+}
+.card:nth-child(2) {
+    background-color: lightgray;
+}
+.card:nth-child(3) {
+    background-color: lightgreen;
+}
+.card:nth-child(4) {
+    background-color: lightslategray;
+}
+h1 {
+    color: blue;
+}
+@media (max-width: 600px) {
+    .container{
+        grid-template-columns: 1fr;
+    }
+}
