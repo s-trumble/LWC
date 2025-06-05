@@ -1,0 +1,22 @@
+<template>
+
+    <table>
+        <thead>
+            <tr>
+                <template for:each={columns} for:item="column">
+                    <th key={column.fieldName}>{column.label}</th>
+                </template>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={opportunitiesWithClass} for:item="opportunity">
+                <tr key={opportunity.id}>
+                    <td>{opportunity.name}</td>
+                    <td class={opportunity.stageClass}>{opportunity.stage}</td>
+                    <td>{opportunity.amount}</td>
+                    <td>{opportunity.closeDate}</td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>
