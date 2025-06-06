@@ -1,0 +1,27 @@
+<template>
+    <template lwc:if={showSpinner}>
+        Spinning...
+    </template>
+
+    <lightning-card  title="People List" icon-name="standard:people">
+        <div>
+            <p>Record Id: <strong>{recordId}</strong></p>
+            <p>Object API Name: <strong>{objectApiName}</strong></p>
+        </div>
+        <lightning-datatable
+            key-field="id"
+            data={people}
+            columns={columns}
+            hide-checkbox-column="true">
+        </lightning-datatable>
+
+        <lightning-record-form
+            object-api-name={objectApiName}
+            record-id={recordId}
+            fields={fields}
+        >
+        </lightning-record-form>
+    </lightning-card>
+
+    
+</template>

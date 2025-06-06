@@ -1,0 +1,12 @@
+<template>
+    <lightning-card  title="Book List" icon-name="utility:bookmark">
+        <lightning-datatable
+                key-field="id"
+                data={books}
+                columns={columns}
+                hide-checkbox-column="true"
+                column-widths-mode="auto">
+        </lightning-datatable>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,11 @@
+<template>
+        <lightning-card  title="Spinner">
+            <div lwc:if={showSpinner}>
+                <p class="slds-p-horizontal_small">Spinner is spinning</p>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+            <div lwc:else>
+                <p class="slds-p-horizontal_small">Spinner ain't spinning</p>
+            </div>
+        </lightning-card>
+</template>
