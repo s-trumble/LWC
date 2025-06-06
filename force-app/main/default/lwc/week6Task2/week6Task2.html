@@ -1,0 +1,31 @@
+<template>
+    <div class="background">
+        <div class="name">
+            Peronsal Expense Tracker
+        </div>
+        <div class="table-name">
+            <h1>{currentMonth} {currentYear} Expenses</h1>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <template for:each={columns} for:item="column">
+                        <th key={column.fieldName}>{column.label}</th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={expensesWithClass} for:item="expense">
+                    <tr key={expense.name}>
+                        <td> {expense.name}</td>
+                        <td class={expense.categoryClass}> {expense.category}</td>
+                        <td> {expense.amount}</td>
+                        <td> {expense.date}</td>
+                    </tr>
+                </template>
+                
+            </tbody>
+        </table>
+    </div>
+</template>
