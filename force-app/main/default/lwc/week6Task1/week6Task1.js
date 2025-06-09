@@ -54,6 +54,14 @@ export default class Week6Task1 extends LightningElement {
     }
 
     getStageClass(stage) {
-        return stage ? stage.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z\-]/g, '') : '';
+        if(stage == 'Closed Won'){
+            return 'closed-won';
+        } else if(stage == 'Closed Lost'){
+            return 'closed-lost';
+        } else if(stage == 'Prospecting'){
+            return 'prospecting';
+        }
+        //remove regex
+        //return stage ? stage.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z\-]/g, '') : '';
     }
 }
