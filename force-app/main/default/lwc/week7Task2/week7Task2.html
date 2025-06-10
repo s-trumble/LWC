@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="All Users" icon-name="standard:user">
+        <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={users}
+                columns={columns}
+                hide-checkbox-column="true">
+        </lightning-datatable>
+    </div>
+    </lightning-card>
+    
+</template> 

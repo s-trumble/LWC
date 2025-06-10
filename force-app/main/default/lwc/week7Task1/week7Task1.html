@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="All Contacts" icon-name="standard:contact">
+        <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={contacts}
+                columns={columns}
+                hide-checkbox-column="true">
+        </lightning-datatable>
+    </div>
+    </lightning-card>
+    
+</template> 
