@@ -14,8 +14,12 @@ export default class Week7Task1 extends LightningElement {
     contacts = [];
 
     connectedCallback() {
-        getAllContacts().then(result => {
-            this.contacts = result;
-        });
+        getAllContacts()
+            .then(result => {
+                this.contacts = result;
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }
 }
