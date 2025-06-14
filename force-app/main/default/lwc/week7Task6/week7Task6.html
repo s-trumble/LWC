@@ -1,10 +1,10 @@
 <template>
-    <div style="height: 300px;">
+    <lightning-card title="Recently Created Cases, Opportunites, and Leads" icon-name="utility:aggregate">
         <lightning-datatable
                 key-field="id"
                 data={casesOppsLeadsWrapperList}
                 columns={columns}
                 hide-checkbox-column="true">
         </lightning-datatable>
-    </div>
+    </lightning-card>
 </template>
