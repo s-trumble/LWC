@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Open Cases" icon-name="standard:case">
+        <lightning-datatable
+                key-field="id"
+                data={cases}
+                columns={columns}
+                hide-checkbox-column>
+        </lightning-datatable>
+    </lightning-card>
+</template>
