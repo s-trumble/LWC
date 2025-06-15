@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Category">
+        <lightning-radio-group
+            name="category"
+            options={picklistOptions}
+            value={selectedCategory}
+            type="radio"
+            onchange={handleChange}>
+        </lightning-radio-group>
+    </lightning-card>
+</template>
