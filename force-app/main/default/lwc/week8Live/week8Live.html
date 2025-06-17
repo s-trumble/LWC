@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Hello world">
+        <lightning-button
+            label="Click me"
+            onclick={handleClick}
+            variant="brand">
+        </lightning-button>
+        <div>
+            Click count: {clickCount}
+        </div>
+        <lightning-button
+            label="Reset Count"
+            onclick={resetCount}
+            variant="destructive">
+        </lightning-button>
+        <lightning-input
+            label="Enter your name"
+            onchange={handleNameChange}
+            >
+        </lightning-input>
+        <div> Hello {name}</div>
+    </lightning-card>
+</template>
