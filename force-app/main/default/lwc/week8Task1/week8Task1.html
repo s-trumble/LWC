@@ -1,10 +1,26 @@
 <template>
     <lightning-card title="Grid Dashboard" variant="base">
-        <div class="slds-grid slds-wrap">
-            <div class="slds-size_6-of-12"><span>New leads</span></div>
-            <div class="slds-size_6-of-12"><span>Closed Deals</span></div>
-            <div class="slds-size_6-of-12"><span>Pipeline value</span></div>
-            <div class="slds-size_6-of-12"><span>Open cases</span></div>
+        <div class="slds-grid slds-wrap slds-text-align_center">
+            <div class="slds-size_6-of-12">
+                <div>New leads</div>
+                <div>{newLeads}</div>
+                <div>This month</div>
+            </div>
+            <div class="slds-size_6-of-12">
+                <div>Closed Deals</div>
+                <div>{closedDeals}</div>
+                <div>Current Quarter</div>
+            </div>
+            <div class="slds-size_6-of-12">
+                <div>Pipeline value</div>
+                <div>${pipelineValue}</div>
+                <div>Current Quarter</div>
+            </div>
+            <div class="slds-size_6-of-12">
+                <div>Open cases</div>
+                <div>{openCases}</div>
+                <div>Pending Resolution</div>
+            </div>
         </div>
     </lightning-card>
 </template>
