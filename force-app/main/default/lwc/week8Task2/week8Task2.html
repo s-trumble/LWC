@@ -1,3 +1,10 @@
 <template>
-    
+    <lightning-card title="Button Card">
+        <lightning-button
+            label="Click me"
+            onclick={handleClick}
+            variant="brand">
+        </lightning-button>
+        <p>Click count: {clickCount}</p>
+    </lightning-card>
 </template>
