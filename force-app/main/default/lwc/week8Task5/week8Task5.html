@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <lightning-input 
+            type="number"
+            required="true"
+            label="Enter a number"
+            placeholder="42.42"
+            name="numberOne"
+            onchange={handleChange}
+            step=".01"
+            >
+        </lightning-input>
+        <lightning-input 
+            type="number"
+            required="true"
+            label="Enter another number"
+            placeholder="99"
+            name="numberTwo"
+            onchange={handleChange}
+            step=".01"
+            >
+        </lightning-input>
+        <div>
+            Sum: {sum}
+        </div>
+        <div>
+            Multiply: {multiply}
+        </div>
+        <div>
+            Subtract: {subtract}
+        </div>    
+        <div>            
+            Divide: {divide}
+        </div>
+    </lightning-card>
+</template>

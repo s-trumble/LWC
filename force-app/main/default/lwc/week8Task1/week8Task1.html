@@ -1,10 +1,39 @@
 <template>
-    <lightning-card title="Grid Dashboard" variant="base">
-        <div class="slds-grid slds-wrap">
-            <div class="slds-size_6-of-12"><span>New leads</span></div>
-            <div class="slds-size_6-of-12"><span>Closed Deals</span></div>
-            <div class="slds-size_6-of-12"><span>Pipeline value</span></div>
-            <div class="slds-size_6-of-12"><span>Open cases</span></div>
+    <div class="dashboard-background">
+        <div class="slds-grid slds-wrap slds-gutters slds-text-align_center">
+            <div class="slds-col slds-size_1-of-2">
+                <div class="slds-box slds-p-around_medium slds-card">
+                    <div><b>New Leads</b></div>
+                    <div class="slds-text-heading_large blue-text">{newLeads}</div>
+                    <div>This Month</div>
+                </div>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+                <div class="slds-box slds-p-around_medium slds-card">
+                    <div><b>Closed Deals</b></div>
+                    <div class="slds-text-heading_large blue-text">{closedDeals}</div>
+                    <div>Q2 Total</div>
+                </div>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-m-top_large">
+                <div class="slds-box slds-p-around_medium slds-card">
+                    <div><b>Pipeline Value</b></div>
+                    <div class="slds-text-heading_large blue-text">
+                        $<lightning-formatted-number value={pipelineValue}></lightning-formatted-number>
+                    </div>
+                    <div>Current Quarter</div>
+                </div>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-m-top_large">
+                <div class="slds-box slds-p-around_medium slds-card">
+                    <div><b>Open Cases</b></div>
+                    <div class="slds-text-heading_large blue-text">{openCases}</div>
+                    <div>Pending Resolution</div>
+                </div>
+            </div>
         </div>
-    </lightning-card>
+    </div>
 </template>
