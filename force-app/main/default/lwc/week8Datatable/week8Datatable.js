@@ -16,6 +16,10 @@ export default class HelloWorld extends LightningElement {
     ];
 
     connectedCallback() {
+        this.loadContacts();
+    }
+
+    loadContacts(){
         queryContacts({accountId: this.recordId})
             .then(result => {
                 this.contacts = result;
@@ -27,16 +31,32 @@ export default class HelloWorld extends LightningElement {
 
     handleSave(event) {
         this.draftValues = event.detail.draftValues;
+        
+        const newRecords = [];
+        const updatedRecords = [];
 
-        saveContacts({contacts: this.draftValues})
+        this.draftValues.forEach(draft => {
+            if (draft.Id.startsWith('new-')) { // Check for our temporary ID to separate new vs old records
+                draft.Id = null;
+                newRecords.push({ ...draft, AccountId: this.recordId }); // Add AccountId for new contacts. draftvalue will not have this value by default
+            } else {
+                updatedRecords.push(draft);
+            }
+        });
+
+        const combinedRecords = [...newRecords, ...updatedRecords];
+
+        saveContacts({contacts: combinedRecords})
             .then(result => {
                 this.contacts = result;
                 this.draftValues = [];
+                this.loadContacts();
 
                 this.showToast('Success!', 'Everything saved.', 'success')
             })
             .catch(error => {
-                console.error('Error fetching contacts:', error);
+                console.error('Error saving contacts:', error);
+                this.showToast('Error', 'Did not save.', 'error')
             });
     }
 
@@ -45,7 +65,9 @@ export default class HelloWorld extends LightningElement {
     }
 
     handleAddContact(event) {
-        
+        const tempId = 'new-' + Date.now();
+        let newContact = {Id: tempId, FirstName: '', LastName: '', Email: '', Phone: ''};
+        this.contacts = [...this.contacts, newContact];
     }
 
     showToast(title, message, variant) {

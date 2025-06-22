@@ -9,12 +9,7 @@ public with sharing class week8DatatableController {
     }
 
     @AuraEnabled
-    public static List<Contact> saveContacts(List<Contact> contacts){
-        update contacts;
-        return [
-            SELECT Id, FirstName, LastName, Email, Phone 
-            FROM Contact 
-            WHERE Id IN :contacts 
-        ];
+    public static void saveContacts(List<Contact> contacts){
+        upsert contacts;
     }
 }
