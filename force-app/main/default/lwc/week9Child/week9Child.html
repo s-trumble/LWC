@@ -1,34 +1,39 @@
 <template>
     <div>
-        <lightning-input 
+        <template if:true={savingContacts}>
+            <lightning-spinner></lightning-spinner>
+        </template>
+        <template if:false={savingContacts}>
+            <lightning-input 
             type="text"
             label="First name"
             onchange={handleFirstNameChange}
             >
-        </lightning-input>
-        <lightning-input 
-            type="text"
-            label="Last name"
-            onchange={handleLastNameChange}
-            >
-        </lightning-input>
-        <lightning-input 
-            type="phone"
-            label="Phone"
-            onchange={handlePhoneChange}
-            >
-        </lightning-input>
-        <lightning-input 
-            type="email"
-            label="Email"
-            onchange={handleEmailChange}
-            >
-        </lightning-input>
+            </lightning-input>
+            <lightning-input 
+                type="text"
+                label="Last name"
+                onchange={handleLastNameChange}
+                >
+            </lightning-input>
+            <lightning-input 
+                type="phone"
+                label="Phone"
+                onchange={handlePhoneChange}
+                >
+            </lightning-input>
+            <lightning-input 
+                type="email"
+                label="Email"
+                onchange={handleEmailChange}
+                >
+            </lightning-input>
 
-        <lightning-button
-            label="Add Contact"
-            variant="Brand"
-            onclick={handleNewContact}>
-        </lightning-button>
+            <lightning-button
+                label="Add Contact"
+                variant="Brand"
+                onclick={handleNewContact}>
+            </lightning-button>
+        </template>
     </div>
 </template>

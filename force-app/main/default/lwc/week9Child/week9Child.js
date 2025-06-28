@@ -7,6 +7,7 @@ export default class Week9Child extends LightningElement {
     lastName = '';
     phone = '';
     email = '';
+    savingContacts = false;
 
     handleFirstNameChange(event) {
         this.firstName = event.target.value;
@@ -23,7 +24,7 @@ export default class Week9Child extends LightningElement {
     
 
     handleNewContact(event){
-
+        this.savingContacts = true;
         saveContact({
             firstName: this.firstName,
             lastName: this.lastName,
@@ -44,8 +45,10 @@ export default class Week9Child extends LightningElement {
             );
 
             this.clearFields();
+            this.savingContacts=false;
         }).catch(error => {
             console.error('Error saving contact: ', error);
+            this.savingContacts=false;
         });   
     }
 
@@ -53,8 +56,7 @@ export default class Week9Child extends LightningElement {
         this.firstName = '';
         this.lastName = '';
         this.phone = '';
-        this.email = '';
-        this.accountId = '';
+        this.email = '';;
     }
     
 }
