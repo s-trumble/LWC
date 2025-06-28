@@ -1,0 +1,34 @@
+<template>
+    <div>
+        <lightning-input 
+            type="text"
+            label="First name"
+            onchange={handleFirstNameChange}
+            >
+        </lightning-input>
+        <lightning-input 
+            type="text"
+            label="Last name"
+            onchange={handleLastNameChange}
+            >
+        </lightning-input>
+        <lightning-input 
+            type="phone"
+            label="Phone"
+            onchange={handlePhoneChange}
+            >
+        </lightning-input>
+        <lightning-input 
+            type="email"
+            label="Email"
+            onchange={handleEmailChange}
+            >
+        </lightning-input>
+
+        <lightning-button
+            label="Add Contact"
+            variant="Brand"
+            onclick={handleNewContact}>
+        </lightning-button>
+    </div>
+</template>
