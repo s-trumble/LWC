@@ -2,7 +2,7 @@ public with sharing class caseCommentController {
     @AuraEnabled
     public static List<Case_Comment__c> getCaseComments(Id caseId){
         return [
-            SELECT Id, Name, Category__c, Visibility__c, CreatedDate, CreatedBy.Name, Case__c
+            SELECT Id, Name, Comment__c, Category__c, Visibility__c, CreatedDate, CreatedById, CreatedBy.Name, Case__c
             FROM Case_Comment__c
             WHERE Case__c = :caseId
             ORDER BY CreatedDate DESC
@@ -10,7 +10,7 @@ public with sharing class caseCommentController {
     }
 
     @AuraEnabled
-    public static void saveCaseComment(Id caseId, String comment, String category, String visibility){
+    public static Case_Comment__c saveCaseComment(Id caseId, String comment, String category, String visibility){
         Case_Comment__c caseComment = new Case_Comment__c(
             Case__c = caseId,
             Comment__c = comment,
@@ -19,5 +19,13 @@ public with sharing class caseCommentController {
         );
 
         insert caseComment;
+
+        return [
+            SELECT Id, Name, Comment__c, Category__c, Visibility__c, CreatedDate, CreatedById, CreatedBy.Name, Case__c
+            FROM Case_Comment__c
+            WHERE Id = :caseComment.Id
+            LIMIT 1
+        ];
+
     }
 }

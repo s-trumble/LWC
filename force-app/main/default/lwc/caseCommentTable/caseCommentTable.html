@@ -1,3 +1,14 @@
 <template>
-    
+    <c-case-comment-form 
+        case-id={recordId}
+        onnewcasecomment={handleNewCaseComment}
+        >
+    </c-case-comment-form>
+    <lightning-datatable
+        key-field="Id"
+        data={caseComments}
+        columns={columns}
+        hide-checkbox-column
+        >
+    </lightning-datatable>
 </template>
