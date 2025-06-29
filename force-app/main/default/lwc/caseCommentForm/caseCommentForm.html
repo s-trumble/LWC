@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Case Comment" icon-name="utility:answer">
+        <lightning-record-edit-form  object-api-name="Case_Comment__c" data-id="caseCommentForm">
+            <lightning-input-field field-name="Comment__c" required onchange={handleCommentChange}></lightning-input-field>
+            <lightning-input-field field-name="Category__c" required onchange={handleCategoryChange}></lightning-input-field>
+            <lightning-input-field field-name="Visibility__c" required onchange={handleVisibilityChange}></lightning-input-field>
+        </lightning-record-edit-form>
+        <lightning-button
+            label="Add Comment"
+            variant="brand"
+            disabled={disableButton}
+            onclick={handleAddComment}
+            >
+        </lightning-button>
+
+
+        
+    </lightning-card>
+</template>
