@@ -8,4 +8,16 @@ public with sharing class caseCommentController {
             ORDER BY CreatedDate DESC
         ];
     }
+
+    @AuraEnabled
+    public static void saveCaseComment(Id caseId, String comment, String category, String visibility){
+        Case_Comment__c caseComment = new Case_Comment__c(
+            Case__c = caseId,
+            Comment__c = comment,
+            Category__c = category,
+            Visibility__c = visibility
+        );
+
+        insert caseComment;
+    }
 }
