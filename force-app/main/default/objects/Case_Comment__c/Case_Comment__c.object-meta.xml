@@ -156,9 +156,10 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Case Comment</label>
     <nameField>
+        <displayFormat>CC-{000}</displayFormat>
         <label>Case Comment Name</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Case Comments</pluralLabel>
     <searchLayouts></searchLayouts>
