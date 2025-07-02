@@ -4,7 +4,7 @@
     <isExposed>true</isExposed>
     <description>Channel for LMS testing</description>
     <lightningMessageFields>
-        <fieldName>value</fieldName>
+        <fieldName>message</fieldName>
         <description>What do we want to send.</description>
     </lightningMessageFields>
 </LightningMessageChannel>
