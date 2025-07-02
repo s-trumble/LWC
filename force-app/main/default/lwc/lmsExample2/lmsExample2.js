@@ -6,14 +6,14 @@ export default class LmsExample2 extends LightningElement {
     @wire(MessageContext)
     messageContext;
     
-    message = '';
+    receivedMessage = '';
 
     connectedCallback() {
         subscribe(
             this.messageContext,
             MY_MESSAGE_CHANNEL,
             (result) => {
-                this.message = result.value;
+                this.receivedMessage = result.value;
             }
         );
     }

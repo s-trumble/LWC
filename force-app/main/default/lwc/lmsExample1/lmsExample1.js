@@ -9,8 +9,10 @@ export default class LmsExample1 extends LightningElement {
 
     handleClick(event){
         console.log('Button clicked', event);
-        publish(this.messageContext, MY_MESSAGE_CHANNEL, {
+        const message = {
             value: 'Hello from LWC Example 1'
-        });
+        };
+
+        publish(this.messageContext, MY_MESSAGE_CHANNEL, message);
     }
 }
