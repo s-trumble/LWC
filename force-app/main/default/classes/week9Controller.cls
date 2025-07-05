@@ -19,4 +19,11 @@ public with sharing class week9Controller {
         );
         insert newContact;
     }
+
+    @AuraEnabled
+    public static void deleteContact(Id contactId){
+        Contact c = new Contact();
+        c.Id = contactId;
+        delete c;
+    }
 }
